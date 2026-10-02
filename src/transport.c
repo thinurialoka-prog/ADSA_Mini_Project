@@ -34,8 +34,13 @@ void initializeCity(CityGraph *graph) {
     addLocation(graph, "Borella");          /* 4 */
     addLocation(graph, "Bambalapitiya");     /* 5 */
     addLocation(graph, "City Center");       /* 6 */
+<<<<<<< Updated upstream
     addLocation(graph, "BI Airport");           /* 7 */
     addLocation(graph, "Industrial Area");   /* 8 */
+=======
+    addLocation(graph, "Airport");           /* 7 */
+    addLocation(graph, "Wellawatta");   /* 8 */
+>>>>>>> Stashed changes
     addLocation(graph, "Stadium");           /* 9 */
     printf("\n");
 
@@ -51,15 +56,23 @@ void initializeCity(CityGraph *graph) {
                           TRANSPORT_BUS, 3.5, 10.0, 0.90, 80);
     addBidirectionalRoute(graph, LOC_PETTAH, LOC_BAMBALAPITIYA,
                           TRANSPORT_BUS, 5.1, 16.0, 1.20, 80);
+<<<<<<< Updated upstream
     addBidirectionalRoute(graph, LOC_PETTAH, LOC_INDUSTRIAL,
+=======
+    addBidirectionalRoute(graph, LOC_BUS_TERMINAL,  LOC_WELLAWATTA ,
+>>>>>>> Stashed changes
                           TRANSPORT_BUS, 7.5, 22.0, 1.50, 80);
     addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_BORELLA,
                           TRANSPORT_BUS, 4.5, 13.0, 1.10, 60);
     addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_BAMBALAPITIYA,
                           TRANSPORT_BUS, 2.8,  9.0, 0.80, 60);
-    addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_STADIUM,
+    addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_DEHIWALA,
                           TRANSPORT_BUS, 6.2, 18.0, 1.30, 80);
+<<<<<<< Updated upstream
     addBidirectionalRoute(graph, LOC_BAMBALAPITIYA,LOC_STADIUM,
+=======
+    addBidirectionalRoute(graph, LOC_SHOPPING_MALL,LOC_DEHIWALA,
+>>>>>>> Stashed changes
                           TRANSPORT_BUS, 4.0, 12.0, 1.00, 60);
     addBidirectionalRoute(graph, LOC_BI_AIRPORT,      LOC_CITY_CENTER,
                           TRANSPORT_BUS, 18.0,35.0, 4.00, 50);
@@ -73,11 +86,15 @@ void initializeCity(CityGraph *graph) {
                           TRANSPORT_TRAIN, 8.5, 10.0, 2.20, 300);
     addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_BI_AIRPORT,
                           TRANSPORT_TRAIN, 25.0,22.0, 6.00, 400);
+<<<<<<< Updated upstream
     addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_INDUSTRIAL,
+=======
+    addBidirectionalRoute(graph, LOC_RAILWAY_STATION,  LOC_WELLAWATTA ,
+>>>>>>> Stashed changes
                           TRANSPORT_TRAIN, 12.0,14.0, 2.50, 350);
     addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_BORELLA,
                           TRANSPORT_TRAIN, 7.2,  9.0, 2.10, 250);
-    addBidirectionalRoute(graph, LOC_CITY_CENTER,     LOC_STADIUM,
+    addBidirectionalRoute(graph, LOC_CITY_CENTER,     LOC_DEHIWALA,
                           TRANSPORT_TRAIN, 5.5,  7.0, 1.80, 400);
     printf("\n");
 
@@ -166,6 +183,7 @@ void displayCityNetwork(const CityGraph *graph) {
  *       BI Airport -> City Center -> Bambalapitiya
  *       Connects the airport to the commercial district.
  *
+<<<<<<< Updated upstream
  *   B4 "Industrial Link"
  *       Industrial Area -> Pettah -> Nugegoda -> University of Colombo
  *       Early-morning shift-worker and student route.
@@ -173,6 +191,15 @@ void displayCityNetwork(const CityGraph *graph) {
  *   B5 "City Loop"
  *       City Center -> Borella -> University of Colombo -> Nugegoda
  *       -> Pettah -> Bambalapitiya -> Stadium -> City Center
+=======
+ *   B4 "Wellawatta Link"
+ *       Wellawatta -> Bus Terminal -> Residential Area -> University
+ *       Early-morning shift-worker and student route.
+ *
+ *   B5 "City Loop"
+ *       City Center -> Hospital -> University -> Residential Area
+ *       -> Bus Terminal -> Shopping Mall -> Dehiwala -> City Center
+>>>>>>> Stashed changes
  *       Full inner-city circular loop.
  * ================================================================ */
 
@@ -243,8 +270,13 @@ void initializeBuses(BusNetwork *network) {
     /* B2 – Nugegoda Express */
     {
         const int stops[] = {
+<<<<<<< Updated upstream
             LOC_NUGEGODA, LOC_PETTAH,
             LOC_CITY_CENTER, LOC_STADIUM
+=======
+            LOC_RESIDENTIAL, LOC_BUS_TERMINAL,
+            LOC_CITY_CENTER, LOC_DEHIWALA
+>>>>>>> Stashed changes
         };
         addBus(network, "B2", "Nugegoda Express",
                80, 10, stops, 4);
@@ -259,23 +291,35 @@ void initializeBuses(BusNetwork *network) {
                50, 30, stops, 3);
     }
 
-    /* B4 – Industrial Link */
+    /* B4 – Wellawatta Link */
     {
         const int stops[] = {
+<<<<<<< Updated upstream
             LOC_INDUSTRIAL,  LOC_PETTAH,
             LOC_NUGEGODA, LOC_UNIVERSITY_OF_COLOMBO
+=======
+             LOC_WELLAWATTA ,  LOC_BUS_TERMINAL,
+            LOC_RESIDENTIAL, LOC_UNIVERSITY
+>>>>>>> Stashed changes
         };
-        addBus(network, "B4", "Industrial Link",
+        addBus(network, "B4", "Wellawatta Link",
                80, 20, stops, 4);
     }
 
     /* B5 – City Loop (circular) */
     {
         const int stops[] = {
+<<<<<<< Updated upstream
             LOC_CITY_CENTER,  LOC_BORELLA,
             LOC_UNIVERSITY_OF_COLOMBO,   LOC_NUGEGODA,
             LOC_PETTAH, LOC_BAMBALAPITIYA,
             LOC_STADIUM,      LOC_CITY_CENTER
+=======
+            LOC_CITY_CENTER,  LOC_HOSPITAL,
+            LOC_UNIVERSITY,   LOC_RESIDENTIAL,
+            LOC_BUS_TERMINAL, LOC_SHOPPING_MALL,
+            LOC_DEHIWALA,      LOC_CITY_CENTER
+>>>>>>> Stashed changes
         };
         addBus(network, "B5", "City Loop",
                60, 12, stops, 8);
@@ -422,8 +466,13 @@ void resetBusPassengers(BusNetwork *network) {
  *       Main commuter trunk connecting suburbs, the rail hub,
  *       downtown, and the BI Airport.
  *
+<<<<<<< Updated upstream
  *   T2 "Industrial Shuttle"
  *       Industrial Area -> Colombo Fort  -> University of Colombo
+=======
+ *   T2 "Wellawatta Shuttle"
+ *       Wellawatta -> Railway Station -> University
+>>>>>>> Stashed changes
  *       Early-morning shift-worker and student express;
  *       limited stops for maximum speed.
  *
@@ -499,14 +548,23 @@ void initializeTrains(TrainNetwork *network) {
                  350, 8, stops, 4);
     }
 
+<<<<<<< Updated upstream
     /* T2 – Industrial Shuttle
      *   Industrial Area -> Colombo Fort -> University of Colombo
      *   Shift-worker and student express; fewer stops, fast journey. */
     {
         const int stops[] = {
             LOC_INDUSTRIAL, LOC_COLOMBO_FORT, LOC_UNIVERSITY_OF_COLOMBO
+=======
+    /* T2 – Wellawatta Shuttle
+     *   Wellawatta -> Railway Station -> University
+     *   Shift-worker and student express; fewer stops, fast journey. */
+    {
+        const int stops[] = {
+             LOC_WELLAWATTA , LOC_RAILWAY_STATION, LOC_UNIVERSITY
+>>>>>>> Stashed changes
         };
-        addTrain(network, "T2", "Industrial Shuttle",
+        addTrain(network, "T2", "Wellawatta Shuttle",
                  300, 15, stops, 3);
     }
 
@@ -516,8 +574,13 @@ void initializeTrains(TrainNetwork *network) {
      *   Elevated frequency on match/event days. */
     {
         const int stops[] = {
+<<<<<<< Updated upstream
             LOC_BI_AIRPORT,     LOC_COLOMBO_FORT,
             LOC_CITY_CENTER,    LOC_STADIUM
+=======
+            LOC_AIRPORT,        LOC_RAILWAY_STATION,
+            LOC_CITY_CENTER,    LOC_DEHIWALA
+>>>>>>> Stashed changes
         };
         addTrain(network, "T3", "Airport Metro",
                  400, 12, stops, 4);
