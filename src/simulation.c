@@ -108,8 +108,8 @@ const char *getDemandLevelName(DemandLevel level) {
 Passenger generateWeightedPassenger(int id, int hour, int max_locations) {
     ensureRandomSeeded();
 
-    int start = 1; /* Default: Residential Area */
-    int dest  = 0; /* Default: University */
+    int start = 1; /* Default: Nugegoda */
+    int dest  = 0; /* Default: University of Colombo */
 
     if (max_locations < 10) max_locations = 10;
 
@@ -119,7 +119,7 @@ Passenger generateWeightedPassenger(int id, int hour, int max_locations) {
         if (r < 75) {
             start = 1;
             int target_r = rand() % 3;
-            if (target_r == 0)      dest = 0; /* University */
+            if (target_r == 0)      dest = 0; /* University of Colombo */
             else if (target_r == 1) dest = 8; /* Industrial Area */
             else                    dest = 6; /* City Center */
         } else {
@@ -134,7 +134,7 @@ Passenger generateWeightedPassenger(int id, int hour, int max_locations) {
         if (r < 75) {
             dest = 1;
             int origin_r = rand() % 3;
-            if (origin_r == 0)      start = 0; /* University */
+            if (origin_r == 0)      start = 0; /* University of Colombo */
             else if (origin_r == 1) start = 8; /* Industrial Area */
             else                    start = 6; /* City Center */
         } else {
@@ -218,9 +218,9 @@ void displayFullDayDemand(void) {
 
         const char *pattern = "General / Off-peak";
         if (hour >= 7 && hour < 9) {
-            pattern = "Residential -> Work/Uni (Peak)";
+            pattern = "Nugegoda -> Work/Uni (Peak)";
         } else if (hour >= 17 && hour < 19) {
-            pattern = "Work/Uni -> Residential (Peak)";
+            pattern = "Work/Uni -> Nugegoda (Peak)";
         } else if (hour >= 12 && hour < 14) {
             pattern = "Midday Commercial Hubs";
         }

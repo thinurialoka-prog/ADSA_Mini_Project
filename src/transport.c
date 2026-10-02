@@ -27,55 +27,55 @@
 void initializeCity(CityGraph *graph) {
 
     /* ---- 10 canonical locations (order matters – matches LOC_* ids) ---- */
-    addLocation(graph, "University");        /* 0 */
-    addLocation(graph, "Residential Area");  /* 1 */
-    addLocation(graph, "Bus Terminal");      /* 2 */
-    addLocation(graph, "Railway Station");   /* 3 */
-    addLocation(graph, "Hospital");          /* 4 */
-    addLocation(graph, "Shopping Mall");     /* 5 */
+    addLocation(graph, "University of Colombo");        /* 0 */
+    addLocation(graph, "Nugegoda Area");  /* 1 */
+    addLocation(graph, "Pettah");      /* 2 */
+    addLocation(graph, "Colombo Fort");   /* 3 */
+    addLocation(graph, "Borella");          /* 4 */
+    addLocation(graph, "Bambalapitiya");     /* 5 */
     addLocation(graph, "City Center");       /* 6 */
-    addLocation(graph, "Airport");           /* 7 */
+    addLocation(graph, "BI Airport");           /* 7 */
     addLocation(graph, "Industrial Area");   /* 8 */
     addLocation(graph, "Stadium");           /* 9 */
     printf("\n");
 
     /* ---- Bus graph edges ---- */
     printf("--- [ Graph Bus Routes ] ---\n");
-    addBidirectionalRoute(graph, LOC_UNIVERSITY,   LOC_RESIDENTIAL,
+    addBidirectionalRoute(graph, LOC_UNIVERSITY_OF_COLOMBO,   LOC_NUGEGODA,
                           TRANSPORT_BUS, 2.5, 8.0,  0.80, 60);
-    addBidirectionalRoute(graph, LOC_UNIVERSITY,   LOC_HOSPITAL,
+    addBidirectionalRoute(graph, LOC_UNIVERSITY_OF_COLOMBO,   LOC_BORELLA,
                           TRANSPORT_BUS, 3.8, 12.0, 1.00, 60);
-    addBidirectionalRoute(graph, LOC_RESIDENTIAL,  LOC_BUS_TERMINAL,
+    addBidirectionalRoute(graph, LOC_NUGEGODA,  LOC_PETTAH,
                           TRANSPORT_BUS, 4.2, 14.0, 1.00, 80);
-    addBidirectionalRoute(graph, LOC_BUS_TERMINAL, LOC_CITY_CENTER,
+    addBidirectionalRoute(graph, LOC_PETTAH, LOC_CITY_CENTER,
                           TRANSPORT_BUS, 3.5, 10.0, 0.90, 80);
-    addBidirectionalRoute(graph, LOC_BUS_TERMINAL, LOC_SHOPPING_MALL,
+    addBidirectionalRoute(graph, LOC_PETTAH, LOC_BAMBALAPITIYA,
                           TRANSPORT_BUS, 5.1, 16.0, 1.20, 80);
-    addBidirectionalRoute(graph, LOC_BUS_TERMINAL, LOC_INDUSTRIAL,
+    addBidirectionalRoute(graph, LOC_PETTAH, LOC_INDUSTRIAL,
                           TRANSPORT_BUS, 7.5, 22.0, 1.50, 80);
-    addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_HOSPITAL,
+    addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_BORELLA,
                           TRANSPORT_BUS, 4.5, 13.0, 1.10, 60);
-    addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_SHOPPING_MALL,
+    addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_BAMBALAPITIYA,
                           TRANSPORT_BUS, 2.8,  9.0, 0.80, 60);
     addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_STADIUM,
                           TRANSPORT_BUS, 6.2, 18.0, 1.30, 80);
-    addBidirectionalRoute(graph, LOC_SHOPPING_MALL,LOC_STADIUM,
+    addBidirectionalRoute(graph, LOC_BAMBALAPITIYA,LOC_STADIUM,
                           TRANSPORT_BUS, 4.0, 12.0, 1.00, 60);
-    addBidirectionalRoute(graph, LOC_AIRPORT,      LOC_CITY_CENTER,
+    addBidirectionalRoute(graph, LOC_BI_AIRPORT,      LOC_CITY_CENTER,
                           TRANSPORT_BUS, 18.0,35.0, 4.00, 50);
     printf("\n");
 
     /* ---- Train graph edges ---- */
     printf("--- [ Graph Train Routes ] ---\n");
-    addBidirectionalRoute(graph, LOC_RAILWAY_STATION, LOC_CITY_CENTER,
+    addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_CITY_CENTER,
                           TRANSPORT_TRAIN, 6.0,  8.0, 2.00, 300);
-    addBidirectionalRoute(graph, LOC_RAILWAY_STATION, LOC_UNIVERSITY,
+    addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_UNIVERSITY_OF_COLOMBO,
                           TRANSPORT_TRAIN, 8.5, 10.0, 2.20, 300);
-    addBidirectionalRoute(graph, LOC_RAILWAY_STATION, LOC_AIRPORT,
+    addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_BI_AIRPORT,
                           TRANSPORT_TRAIN, 25.0,22.0, 6.00, 400);
-    addBidirectionalRoute(graph, LOC_RAILWAY_STATION, LOC_INDUSTRIAL,
+    addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_INDUSTRIAL,
                           TRANSPORT_TRAIN, 12.0,14.0, 2.50, 350);
-    addBidirectionalRoute(graph, LOC_RAILWAY_STATION, LOC_HOSPITAL,
+    addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_BORELLA,
                           TRANSPORT_TRAIN, 7.2,  9.0, 2.10, 250);
     addBidirectionalRoute(graph, LOC_CITY_CENTER,     LOC_STADIUM,
                           TRANSPORT_TRAIN, 5.5,  7.0, 1.80, 400);
@@ -154,25 +154,25 @@ void displayCityNetwork(const CityGraph *graph) {
  *
  *  Route overview:
  *
- *   B1 "University Corridor"
- *       University -> Bus Terminal -> Hospital -> Shopping Mall
+ *   B1 "University of Colombo Corridor"
+ *       University of Colombo -> Pettah -> Borella -> Bambalapitiya
  *       Serves student / medical / retail commuters.
  *
- *   B2 "Residential Express"
- *       Residential Area -> Bus Terminal -> City Center -> Stadium
+ *   B2 "Nugegoda Express"
+ *       Nugegoda -> Pettah -> City Center -> Stadium
  *       Daily commuter trunk line from suburbs to downtown.
  *
  *   B3 "Airport Shuttle"
- *       Airport -> City Center -> Shopping Mall
+ *       BI Airport -> City Center -> Bambalapitiya
  *       Connects the airport to the commercial district.
  *
  *   B4 "Industrial Link"
- *       Industrial Area -> Bus Terminal -> Residential Area -> University
+ *       Industrial Area -> Pettah -> Nugegoda -> University of Colombo
  *       Early-morning shift-worker and student route.
  *
  *   B5 "City Loop"
- *       City Center -> Hospital -> University -> Residential Area
- *       -> Bus Terminal -> Shopping Mall -> Stadium -> City Center
+ *       City Center -> Borella -> University of Colombo -> Nugegoda
+ *       -> Pettah -> Bambalapitiya -> Stadium -> City Center
  *       Full inner-city circular loop.
  * ================================================================ */
 
@@ -230,30 +230,30 @@ void initializeBuses(BusNetwork *network) {
 
     network->bus_count = 0;
 
-    /* B1 – University Corridor */
+    /* B1 – University of Colombo Corridor */
     {
         const int stops[] = {
-            LOC_UNIVERSITY, LOC_BUS_TERMINAL,
-            LOC_HOSPITAL,   LOC_SHOPPING_MALL
+            LOC_UNIVERSITY_OF_COLOMBO, LOC_PETTAH,
+            LOC_BORELLA,   LOC_BAMBALAPITIYA
         };
-        addBus(network, "B1", "University Corridor",
+        addBus(network, "B1", "University of Colombo Corridor",
                70, 15, stops, 4);
     }
 
-    /* B2 – Residential Express */
+    /* B2 – Nugegoda Express */
     {
         const int stops[] = {
-            LOC_RESIDENTIAL, LOC_BUS_TERMINAL,
+            LOC_NUGEGODA, LOC_PETTAH,
             LOC_CITY_CENTER, LOC_STADIUM
         };
-        addBus(network, "B2", "Residential Express",
+        addBus(network, "B2", "Nugegoda Express",
                80, 10, stops, 4);
     }
 
     /* B3 – Airport Shuttle */
     {
         const int stops[] = {
-            LOC_AIRPORT, LOC_CITY_CENTER, LOC_SHOPPING_MALL
+            LOC_BI_AIRPORT, LOC_CITY_CENTER, LOC_BAMBALAPITIYA
         };
         addBus(network, "B3", "Airport Shuttle",
                50, 30, stops, 3);
@@ -262,8 +262,8 @@ void initializeBuses(BusNetwork *network) {
     /* B4 – Industrial Link */
     {
         const int stops[] = {
-            LOC_INDUSTRIAL,  LOC_BUS_TERMINAL,
-            LOC_RESIDENTIAL, LOC_UNIVERSITY
+            LOC_INDUSTRIAL,  LOC_PETTAH,
+            LOC_NUGEGODA, LOC_UNIVERSITY_OF_COLOMBO
         };
         addBus(network, "B4", "Industrial Link",
                80, 20, stops, 4);
@@ -272,9 +272,9 @@ void initializeBuses(BusNetwork *network) {
     /* B5 – City Loop (circular) */
     {
         const int stops[] = {
-            LOC_CITY_CENTER,  LOC_HOSPITAL,
-            LOC_UNIVERSITY,   LOC_RESIDENTIAL,
-            LOC_BUS_TERMINAL, LOC_SHOPPING_MALL,
+            LOC_CITY_CENTER,  LOC_BORELLA,
+            LOC_UNIVERSITY_OF_COLOMBO,   LOC_NUGEGODA,
+            LOC_PETTAH, LOC_BAMBALAPITIYA,
             LOC_STADIUM,      LOC_CITY_CENTER
         };
         addBus(network, "B5", "City Loop",
@@ -418,18 +418,18 @@ void resetBusPassengers(BusNetwork *network) {
  *  Route overview:
  *
  *   T1 "Northern Line"
- *       Residential Area -> Railway Station -> City Center -> Airport
+ *       Nugegoda  -> Colombo Fort  -> City Center -> BI Airport
  *       Main commuter trunk connecting suburbs, the rail hub,
- *       downtown, and the international airport.
+ *       downtown, and the BI Airport.
  *
  *   T2 "Industrial Shuttle"
- *       Industrial Area -> Railway Station -> University
+ *       Industrial Area -> Colombo Fort  -> University of Colombo
  *       Early-morning shift-worker and student express;
  *       limited stops for maximum speed.
  *
  *   T3 "Airport Metro"
- *       Airport -> Railway Station -> City Center -> Stadium
- *       Premium airport link continuing into the entertainment
+ *       BI Airport -> Colombo Fort -> City Center -> Stadium
+ *       Premium BI Airport link continuing into the entertainment
  *       district; elevated frequency on event days.
  * ================================================================ */
 
@@ -488,35 +488,35 @@ void initializeTrains(TrainNetwork *network) {
     network->train_count = 0;
 
     /* T1 – Northern Line
-     *   Residential Area -> Railway Station -> City Center -> Airport
+     *   Nugegoda -> Colombo Fort -> City Center -> BI Airport
      *   Core commuter service; highest capacity, highest frequency. */
     {
         const int stops[] = {
-            LOC_RESIDENTIAL,    LOC_RAILWAY_STATION,
-            LOC_CITY_CENTER,    LOC_AIRPORT
+            LOC_NUGEGODA,    LOC_COLOMBO_FORT,
+            LOC_CITY_CENTER,    LOC_BI_AIRPORT
         };
         addTrain(network, "T1", "Northern Line",
                  350, 8, stops, 4);
     }
 
     /* T2 – Industrial Shuttle
-     *   Industrial Area -> Railway Station -> University
+     *   Industrial Area -> Colombo Fort -> University of Colombo
      *   Shift-worker and student express; fewer stops, fast journey. */
     {
         const int stops[] = {
-            LOC_INDUSTRIAL, LOC_RAILWAY_STATION, LOC_UNIVERSITY
+            LOC_INDUSTRIAL, LOC_COLOMBO_FORT, LOC_UNIVERSITY_OF_COLOMBO
         };
         addTrain(network, "T2", "Industrial Shuttle",
                  300, 15, stops, 3);
     }
 
     /* T3 – Airport Metro
-     *   Airport -> Railway Station -> City Center -> Stadium
+     *   Airport -> Colombo Fort -> City Center -> Stadium
      *   Premium airport link into the entertainment district.
      *   Elevated frequency on match/event days. */
     {
         const int stops[] = {
-            LOC_AIRPORT,        LOC_RAILWAY_STATION,
+            LOC_BI_AIRPORT,     LOC_COLOMBO_FORT,
             LOC_CITY_CENTER,    LOC_STADIUM
         };
         addTrain(network, "T3", "Airport Metro",

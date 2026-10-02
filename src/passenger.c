@@ -154,7 +154,7 @@ void passengerMenu(const CityGraph *graph) {
     printf("  ======================================== \n");
     printf("            PASSENGER JOURNEY SIMULATOR            \n");
     printf("  ======================================== \n");
-    printf("   1. Run Standard Demo (P001: Residential -> Uni)     \n");
+    printf("   1. Run Standard Demo (P001: Nugegoda -> Uni)     \n");
     printf("   2. Create Custom Passenger Journey                  \n");
     printf("   3. Generate & Simulate Random Passenger             \n");
     printf("  ======================================== \n");
@@ -164,7 +164,7 @@ void passengerMenu(const CityGraph *graph) {
     if (scanf("%d", &choice) != 1) choice = 1;
 
     if (choice == 1) {
-        /* Standard demo as requested in prompt: Residential Area (1) -> University (0), 07:00 AM */
+        /* Standard demo as requested in prompt: Nugegoda (1) -> University of Colombo (0), 07:00 AM */
         Passenger p = createPassenger(1, 1, 0, 7);
         simulatePassengerJourney(&p, graph, OPTIMIZE_TIME);
     } else if (choice == 2) {

@@ -7,14 +7,14 @@
  * CITY LOCATION IDs  (fixed indices matching CityGraph.locations[])
  * ================================================================ */
 
-#define LOC_UNIVERSITY       0
-#define LOC_RESIDENTIAL      1
-#define LOC_BUS_TERMINAL     2
-#define LOC_RAILWAY_STATION  3
-#define LOC_HOSPITAL         4
-#define LOC_SHOPPING_MALL    5
+#define LOC_UNIVERSITY_OF_COLOMBO       0
+#define LOC_NUGEGODA      1
+#define LOC_PETTAH     2
+#define LOC_COLOMBO_FORT  3
+#define LOC_BORELLA         4
+#define LOC_BAMBALAPITIYA    5
 #define LOC_CITY_CENTER      6
-#define LOC_AIRPORT          7
+#define LOC_BI_AIRPORT          7
 #define LOC_INDUSTRIAL       8
 #define LOC_STADIUM          9
 #define CITY_LOCATION_COUNT  10

@@ -215,11 +215,12 @@ void displayLocations(const CityGraph *graph) {
         return;
     }
 
-    printf("\n+------------------------------------------+\n");
-    printf("|          CITY LOCATIONS / STATIONS       |\n");
-    printf("+------+-----------------------------------+\n");
+    // printf("\n+------------------------------------------+\n");
+    printf("\n____________________________________________\n\n");
+    printf("           CITY LOCATIONS / STATIONS        \n");
+    printf("\n____________________________________________\n\n");
     printf("| ID   | Name                              |\n");
-    printf("+------+-----------------------------------+\n");
+    printf("\n____________________________________________\n\n");
 
     int i;
     for (i = 0; i < graph->location_count; i++) {
@@ -228,7 +229,7 @@ void displayLocations(const CityGraph *graph) {
                graph->locations[i].name);
     }
 
-    printf("+------+-----------------------------------+\n");
+    printf("\n____________________________________________\n");
     printf("  Total: %d location(s)\n\n", graph->location_count);
 }
 

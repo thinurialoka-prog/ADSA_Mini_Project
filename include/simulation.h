@@ -31,8 +31,8 @@ typedef struct {
     char        time_range[16];        /* e.g., "07:00 - 08:00"       */
     DemandLevel level;                 /* LOW, MEDIUM, VERY_HIGH      */
     int         passenger_count;       /* Total passengers generated  */
-    int         morning_commute_count; /* Residential -> Work/Uni     */
-    int         evening_commute_count; /* Work/Uni -> Residential     */
+    int         morning_commute_count; /* Nugegoda -> Work/Uni     */
+    int         evening_commute_count; /* Work/Uni -> Nugegoda     */
     int         other_travel_count;    /* General urban travel        */
 } HourlyDemandInfo;
 
