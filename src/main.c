@@ -52,7 +52,7 @@ static void printMenu(void) {
     printf(" SMART CITY PUBLIC TRANSPORT SYSTEM     \n");
     printf("========================================\n");
     printf(" 1. Display City Locations              \n");
-    printf(" 2. Display City Graph                  \n");
+    printf(" 2. Display City Map                    \n");
     printf(" 3. Display Bus Network                 \n");
     printf(" 4. Display Train Network               \n");
     printf(" 5. Display All Routes                  \n");
@@ -63,9 +63,8 @@ static void printMenu(void) {
     printf("10. Simulate Passenger Demand           \n");
     printf("11. Run Full-Day Simulation             \n");
     printf("12. Display System Profile              \n");
-    printf("13. Display Statistics                  \n");
     printf(" 0. Exit                                \n");
-    printf("========================================\n");
+    printf("________________________________________\n");
 }
 
 /* ----------------------------------------------------------------
@@ -95,7 +94,7 @@ int main(void) {
     while (choice != 0) {
         printf("\n");
         printMenu();
-        choice = readInt("Enter option (0-13): ", 0, 13);
+        choice = readInt("Enter option (0-12): ", 0, 12);
         printf("\n");
 
         switch (choice) {
@@ -192,13 +191,6 @@ int main(void) {
                 runFullProfiling(&city);
                 break;
 
-            /* ── 13: Display Statistics ── */
-            case 13: {
-                FullDaySimulationSummary sim = runFullDaySimulation(&city);
-                SystemStats stats = computeSystemStats(&sim);
-                displayProfilingReport(&stats, 0.0);
-                break;
-            }
 
             /* ── 0: Exit ── */
             case 0:

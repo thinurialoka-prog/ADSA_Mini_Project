@@ -174,7 +174,7 @@ int addRoute(CityGraph    *graph,
 
     appendRoute(&graph->locations[src_id], new_route);
 
-    printf("[Graph] Route added     -> [%d] %-20s --(%s, %.1f km, %.0f min, $%.2f)--> [%d] %s\n",
+    printf("[Graph] Route added     -> [%d] %-20s --(%s, %.1f km, %.0f min, Rs. %.2f)--> [%d] %s\n",
            src_id, graph->locations[src_id].name,
            transportName(transport), distance, travel_time, fare,
            dest_id, graph->locations[dest_id].name);
@@ -219,17 +219,17 @@ void displayLocations(const CityGraph *graph) {
     printf("\n____________________________________________\n\n");
     printf("           CITY LOCATIONS / STATIONS        \n");
     printf("\n____________________________________________\n\n");
-    printf("| ID   | Name                              |\n");
+    printf(" ID   | Name                              \n");
     printf("\n____________________________________________\n\n");
 
     int i;
     for (i = 0; i < graph->location_count; i++) {
-        printf("| %-4d | %-33s |\n",
+        printf(" %-4d | %-33s \n",
                graph->locations[i].id,
                graph->locations[i].name);
     }
 
-    printf("\n____________________________________________\n");
+    printf("\n____________________________________________\n\n");
     printf("  Total: %d location(s)\n\n", graph->location_count);
 }
 
@@ -242,36 +242,33 @@ void displayGraph(const CityGraph *graph) {
         return;
     }
 
-    printf("\n============================================================\n");
-    printf("          SMART CITY TRANSPORT GRAPH (Adjacency List)      \n");
-    printf("============================================================\n");
+    printf("_______________________________________________________________\n\n");   
+    printf("          SMART CITY TRANSPORT MAP      \n");
+    printf("_______________________________________________________________\n\n");
 
     int i;
     for (i = 0; i < graph->location_count; i++) {
         const Location *loc = &graph->locations[i];
 
         printf("\n[%d] %s\n", loc->id, loc->name);
-        printf("    |\n");
+        printf("    \n");
 
         if (loc->routes == NULL) {
-            printf("    +-- (no outgoing routes)\n");
+            printf("    >   (no outgoing routes)\n");
             continue;
         }
 
         Route *r = loc->routes;
         while (r != NULL) {
-            const char *arrow = (r->next != NULL) ? "|" : " ";
+            const char *arrow = (r->next != NULL) ? "\n" : " ";
 
-            printf("    +-- %-6s --> [%d] %-20s "
-                   "| dist: %5.1f km | time: %4.0f min "
-                   "| fare: $%5.2f | cap: %4d pax\n",
+            printf("   > %-6s --> [%d] %-20s "
+                   "| distance: %5.1f km | time: %4.0f min \n ",
                    transportName(r->transport),
                    r->destination,
                    graph->locations[r->destination].name,
                    r->distance,
-                   r->travel_time,
-                   r->fare,
-                   r->capacity);
+                   r->travel_time);
 
             /* Suppress unused warning for 'arrow' – it's kept for
                potential future tree-style formatting */
@@ -281,7 +278,7 @@ void displayGraph(const CityGraph *graph) {
         }
     }
 
-    printf("\n============================================================\n\n");
+    printf("_______________________________________________________________\n\n");
 }
 
 /* ---------------------------------------------------------------- */

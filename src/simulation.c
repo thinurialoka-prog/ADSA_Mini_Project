@@ -200,11 +200,11 @@ Passenger *generateHourlyPassengers(int hour, const CityGraph *graph, int *out_c
 
 void displayFullDayDemand(void) {
     printf("\n");
-    printf("  ╔══════════════════════════════════════════════════════════════════════╗\n");
-    printf("  ║             24-HOUR VARIABLE PASSENGER DEMAND PROFILE               ║\n");
-    printf("  ╠══════╦═══════════════╦═══════════╦════════════╦══════════════════════╣\n");
-    printf("  ║ Hour ║ Time Range    ║ Demand    ║ Passengers ║ Primary Flow Pattern ║\n");
-    printf("  ╠══════╬═══════════════╬═══════════╬════════════╬══════════════════════╣\n");
+    printf("  ________________________________________________________________________\n\n");
+    printf("  |             24-HOUR VARIABLE PASSENGER DEMAND PROFILE                |\n");
+    printf("  ________________________________________________________________________\n");
+    printf("  | Hour | Time Range    | Demand    | Passengers | Primary Flow Pattern |\n");
+    printf("  |______|_______________|___________|____________|______________________|\n");
 
     int total_passengers = 0;
     int hour;
@@ -218,28 +218,21 @@ void displayFullDayDemand(void) {
 
         const char *pattern = "General / Off-peak";
         if (hour >= 7 && hour < 9) {
-            pattern = "Nugegoda -> Work/Uni (Peak)";
+            pattern = "Nugegoda -> Work/Uni";
         } else if (hour >= 17 && hour < 19) {
-            pattern = "Work/Uni -> Nugegoda (Peak)";
+            pattern = "Work/Uni -> Nugegoda";
         } else if (hour >= 12 && hour < 14) {
             pattern = "Midday Commercial Hubs";
         }
 
-        char bar[16];
-        int bar_len = demand / 40;
-        if (bar_len > 15) bar_len = 15;
-        int b;
-        for (b = 0; b < bar_len; b++) bar[b] = '#';
-        bar[bar_len] = '\0';
-
-        printf("  ║  %02d  ║ %-13s ║ %-9s ║    %4d    ║ %-20s ║ %-15s\n",
-               hour, time_range, getDemandLevelName(lvl), demand, pattern, bar);
+        printf("  |  %02d  | %-13s | %-9s |    %4d    | %-20s |\n",
+               hour, time_range, getDemandLevelName(lvl), demand, pattern);
     }
 
-    printf("  ╠══════╩═══════════════╩═══════════╩════════════╩══════════════════════╣\n");
-    printf("  ║  TOTAL DAILY GENERATED PASSENGERS : %5d passengers                   ║\n",
+    printf("  ________________________________________________________________________\n\n");
+    printf("  |  TOTAL DAILY REQUESTED PASSENGERS : %5d passengers                   |\n",
            total_passengers);
-    printf("  ╚══════════════════════════════════════════════════════════════════════╝\n\n");
+    printf("  ________________________________________________________________________\n\n");
 }
 
 /* ================================================================
@@ -253,10 +246,10 @@ FullDaySimulationSummary runFullDaySimulation(const CityGraph *graph) {
     if (graph == NULL) return summary;
 
     printf("\n");
-    printf("================================================================\n");
+    printf("________________________________________________________________\n\n");
     printf("     STARTING FULL-DAY SMART CITY TRANSPORT SIMULATION          \n");
     printf("                (06:00 AM to 11:00 PM)                          \n");
-    printf("================================================================\n");
+    printf("________________________________________________________________\n");
 
     int h;
     for (h = 6; h <= 23; h++) {
@@ -269,17 +262,17 @@ FullDaySimulationSummary runFullDaySimulation(const CityGraph *graph) {
         hr->passengers_generated = demand;
 
         if (demand == 0 || passengers == NULL) {
-            printf("\n========================================\n");
+            printf("\n________________________________________\n\n");
             printf("%s\n", hr->time_str);
-            printf("========================================\n");
-            printf("Passengers generated : %d\n", 0);
+            printf("________________________________________\n\n");
+            printf("Passengers requests : %d\n", 0);
             printf("Successful journeys  : %d\n", 0);
             printf("Failed journeys      : %d\n", 0);
             printf("Average travel time  : 0.0 minutes\n");
             printf("Average waiting time : 0.0 minutes\n");
             printf("Bus passengers       : %d\n", 0);
             printf("Train passengers     : %d\n", 0);
-            printf("========================================\n");
+            printf("________________________________________\n\n");
             continue;
         }
 
@@ -361,17 +354,17 @@ FullDaySimulationSummary runFullDaySimulation(const CityGraph *graph) {
         }
 
         /* Print exact hourly summary block as requested */
-        printf("\n========================================\n");
+        printf("\n________________________________________\n\n");
         printf("%s\n", hr->time_str);
-        printf("========================================\n");
-        printf("Passengers generated : %d\n", hr->passengers_generated);
+        printf("________________________________________\n\n");
+        printf("Passenger requests   : %d\n", hr->passengers_generated);
         printf("Successful journeys  : %d\n", hr->successful_journeys);
         printf("Failed journeys      : %d\n", hr->failed_journeys);
         printf("Average travel time  : %.1f minutes\n", hr->avg_travel_time);
         printf("Average waiting time : %.1f minutes\n", hr->avg_waiting_time);
         printf("Bus passengers       : %d\n", hr->bus_passengers);
         printf("Train passengers     : %d\n", hr->train_passengers);
-        printf("========================================\n");
+        printf("________________________________________\n\n");
 
         /* Accumulate daily totals */
         summary.total_passengers_generated += hr->passengers_generated;
@@ -395,42 +388,42 @@ FullDaySimulationSummary runFullDaySimulation(const CityGraph *graph) {
 
     /* Print complete daily summary report */
     printf("\n");
-    printf("  ╔══════════════════════════════════════════════════════════════════════╗\n");
-    printf("  ║          COMPLETE FULL-DAY SIMULATION SUMMARY REPORT                 ║\n");
-    printf("  ║                  (06:00 AM – 11:00 PM Operating Window)              ║\n");
-    printf("  ╠══════════════════════════════════════════════════════════════════════╣\n");
-    printf("  ║  Total Operating Hours     : 18 hours (06:00 AM - 11:00 PM)         ║\n");
-    printf("  ║  Total Demand Generated    : %6d passengers                      ║\n",
+    printf("  ________________________________________________________________________\n\n");
+    printf("            COMPLETE FULL-DAY SIMULATION SUMMARY REPORT                 \n");
+    printf("                       (06:00 AM - 11:00 PM)                            \n");
+    printf("  ________________________________________________________________________\n\n");
+    printf("    Total Operating Hours     : 18 hours (06:00 AM - 11:00 PM)         \n");
+    printf("    Total Demand Generated    : %6d passengers                      \n",
            summary.total_passengers_generated);
-    printf("  ║  Successful Journeys       : %6d passengers (%5.1f%% completion) ║\n",
+    printf("    Successful Journeys       : %6d passengers (%5.1f%% completion) \n",
            summary.total_successful_journeys,
            (summary.total_passengers_generated > 0) ? (100.0 * summary.total_successful_journeys / summary.total_passengers_generated) : 0.0);
-    printf("  ║  Failed / Abandoned        : %6d passengers (%5.1f%% failure)    ║\n",
+    printf("    Failed / Abandoned        : %6d passengers (%5.1f%% failure)    \n",
            summary.total_failed_journeys,
            (summary.total_passengers_generated > 0) ? (100.0 * summary.total_failed_journeys / summary.total_passengers_generated) : 0.0);
-    printf("  ╠══════════════════════════════════════════════════════════════════════╣\n");
-    printf("  ║  JOURNEY METRICS & TIME TOTALS                                       ║\n");
-    printf("  ║  Total Distance Traveled   : %9.1f km                              ║\n",
+    printf("  ________________________________________________________________________\n\n");
+    printf("    JOURNEY METRICS & TIME TOTALS                                       \n");
+    printf("    Total Distance Traveled   : %9.1f km                              \n",
            summary.total_distance);
-    printf("  ║  Total In-Vehicle Time     : %9.1f min  (%6.1f hrs)              ║\n",
+    printf("    Total In-Vehicle Time     : %9.1f min  (%6.1f hrs)              \n",
            summary.total_travel_time, summary.total_travel_time / 60.0);
-    printf("  ║  Total Passenger Wait Time : %9.1f min  (%6.1f hrs)              ║\n",
+    printf("    Total Passenger Wait Time : %9.1f min  (%6.1f hrs)              \n",
            summary.total_waiting_time, summary.total_waiting_time / 60.0);
-    printf("  ║  Average Travel Time       : %9.1f min / passenger                 ║\n",
+    printf("    Average Travel Time       : %9.1f min / passenger                 \n",
            summary.avg_travel_time);
-    printf("  ║  Average Waiting Time      : %9.1f min / passenger                 ║\n",
+    printf("    Average Waiting Time      : %9.1f min / passenger                 \n",
            summary.avg_waiting_time);
-    printf("  ║  Total Fares Collected     : $%9.2f                                ║\n",
+    printf("    Total Fares Collected     : Rs. %9.2f                                \n",
            summary.total_fare);
-    printf("  ╠══════════════════════════════════════════════════════════════════════╣\n");
-    printf("  ║  MODAL BREAKDOWN & TRANSFERS                                         ║\n");
-    printf("  ║  Bus Passengers            : %6d passengers                      ║\n",
+    printf("  ________________________________________________________________________\n\n");
+    printf("    MODAL BREAKDOWN & TRANSFERS                                         \n");
+    printf("    Bus Passengers            : %6d passengers                      \n",
            summary.total_bus_passengers);
-    printf("  ║  Train Passengers          : %6d passengers                      ║\n",
+    printf("    Train Passengers          : %6d passengers                      \n",
            summary.total_train_passengers);
-    printf("  ║  Total Mode Transfers      : %6d transfers                       ║\n",
+    printf("    Total Mode Transfers      : %6d transfers                       \n",
            summary.total_transfers);
-    printf("  ╚══════════════════════════════════════════════════════════════════════╝\n\n");
+    printf("  ________________________________________________________________________\n\n");
 
     return summary;
 }
@@ -573,39 +566,39 @@ void printSimulationMetricsReport(const SimulationMetrics *m, const char *title)
 
     printf("\n");
     printf("  ╔══════════════════════════════════════════════════════════╗\n");
-    printf("  ║  %-56s  ║\n", title ? title : "SIMULATION METRICS REPORT");
+    printf("  |  %-56s  |\n", title ? title : "SIMULATION METRICS REPORT");
     printf("  ╠══════════════════════════════════════════════════════════╣\n");
     if (m->hour >= 0) {
-        printf("  ║  Hour Simulated     : %02d:00 - %02d:00                  ║\n",
+        printf("  |  Hour Simulated     : %02d:00 - %02d:00                  |\n",
                m->hour, (m->hour + 1) % 24);
-        printf("  ║  Demand Level       : %-35s║\n",
+        printf("  |  Demand Level       : %-35s|\n",
                getDemandLevelName(getDemandLevel(m->hour)));
     } else {
-        printf("  ║  Time Period        : Full 24-Hour Day                   ║\n");
+        printf("  |  Time Period        : Full 24-Hour Day                   |\n");
     }
     printf("  ╠══════════════════════════════════════════════════════════╣\n");
-    printf("  ║  CAPACITY & DEMAND STATISTICS                            ║\n");
-    printf("  ║  Total Demand       : %6d passengers                   ║\n", m->total_demand);
-    printf("  ║  Passengers Served  : %6d passengers (%5.1f%%)           ║\n",
+    printf("  |  CAPACITY & DEMAND STATISTICS                            |\n");
+    printf("  |  Total Demand       : %6d passengers                   |\n", m->total_demand);
+    printf("  |  Passengers Served  : %6d passengers (%5.1f%%)           |\n",
            m->passengers_served,
            (m->total_demand > 0) ? (100.0 * m->passengers_served / m->total_demand) : 0.0);
-    printf("  ║  Passengers Delayed : %6d passengers (%5.1f%% forced wait)║\n",
+    printf("  |  Passengers Delayed : %6d passengers (%5.1f%% forced wait)|\n",
            m->passengers_waiting,
            (m->passengers_served > 0) ? (100.0 * m->passengers_waiting / m->passengers_served) : 0.0);
-    printf("  ║  Capacity Overflow  : %6d overflow event(s)            ║\n", m->overflow_events);
+    printf("  |  Capacity Overflow  : %6d overflow event(s)            |\n", m->overflow_events);
     printf("  ╠══════════════════════════════════════════════════════════╣\n");
-    printf("  ║  WAITING TIME & TRAVEL METRICS                           ║\n");
-    printf("  ║  Total Waiting Time : %9.1f min  (%5.1f hrs)          ║\n",
+    printf("  |  WAITING TIME & TRAVEL METRICS                           |\n");
+    printf("  |  Total Waiting Time : %9.1f min  (%5.1f hrs)          |\n",
            m->total_waiting_time_min, m->total_waiting_time_min / 60.0);
-    printf("  ║  Avg Waiting Time   : %9.2f min per passenger          ║\n", m->avg_waiting_time_min);
-    printf("  ║  Total In-Vehicle   : %9.1f min  (%5.1f hrs)          ║\n",
+    printf("  |  Avg Waiting Time   : %9.2f min per passenger          |\n", m->avg_waiting_time_min);
+    printf("  |  Total In-Vehicle   : %9.1f min  (%5.1f hrs)          |\n",
            m->total_travel_time_min, m->total_travel_time_min / 60.0);
     printf("  ╠══════════════════════════════════════════════════════════╣\n");
-    printf("  ║  VEHICLE UTILIZATION & LEG TRIPS                         ║\n");
-    printf("  ║  Bus Leg Trips      : %6d passenger-trips              ║\n", m->bus_trips);
-    printf("  ║  Train Leg Trips    : %6d passenger-trips              ║\n", m->train_trips);
-    printf("  ║  Offered Capacity   : %6.0f seats                        ║\n", m->total_offered_capacity);
-    printf("  ║  Fleet Utilization  : %6.2f%%                              ║\n", m->vehicle_utilization_pct);
+    printf("  |  VEHICLE UTILIZATION & LEG TRIPS                         |\n");
+    printf("  |  Bus Leg Trips      : %6d passenger-trips              |\n", m->bus_trips);
+    printf("  |  Train Leg Trips    : %6d passenger-trips              |\n", m->train_trips);
+    printf("  |  Offered Capacity   : %6.0f seats                        |\n", m->total_offered_capacity);
+    printf("  |  Fleet Utilization  : %6.2f%%                              |\n", m->vehicle_utilization_pct);
     printf("  ╚══════════════════════════════════════════════════════════╝\n\n");
 }
 

@@ -105,9 +105,9 @@ int simulatePassengerJourney(Passenger *p, const CityGraph *graph, OptimizeMode 
     formatDepartureTime(p->departure_hour, time_str, sizeof(time_str));
 
     printf("\n");
-    printf("===============================================================\n");
+    printf("_________________________________________________________________ \n");
     printf("                  PASSENGER JOURNEY SIMULATION                 \n");
-    printf("===============================================================\n");
+    printf("_________________________________________________________________ \n");
     printf("Passenger %s\n\n", p->id_str);
     printf("Start:\n%s\n\n", graph->locations[p->start_location].name);
     printf("Destination:\n%s\n\n", graph->locations[p->destination_location].name);
@@ -122,23 +122,23 @@ int simulatePassengerJourney(Passenger *p, const CityGraph *graph, OptimizeMode 
             const char *mode_str = (result.transport_used[i] == TRANSPORT_BUS) ? "BUS" : "TRAIN";
             printf("   |\n");
             printf(" %-5s\n", mode_str);
-            printf("   ↓\n");
+            printf("   |\n");
         }
     }
 
     double total_journey_time = p->total_travel_time + p->total_waiting_time;
 
     printf("\nCalculated Statistics:\n");
-    printf("---------------------------------------------------------------\n");
+    printf("_________________________________________________________________ \n");
     printf("  Total Distance     : %7.2f km\n", p->total_distance);
     printf("  In-Vehicle Time    : %7.2f min\n", p->total_travel_time);
     printf("  Waiting Time       : %7.2f min\n", p->total_waiting_time);
     printf("  Total Journey Time : %7.2f min  (%.1f hrs)\n",
            total_journey_time, total_journey_time / 60.0);
-    printf("  Total Fare         : $%6.2f\n", p->total_fare);
+    printf("  Total Fare         : Rs. %6.2f\n", p->total_fare);
     printf("  Transfers          : %d transfer(s)\n", p->number_of_transfers);
     printf("  Status             : SUCCESS\n");
-    printf("---------------------------------------------------------------\n\n");
+    printf("_________________________________________________________________ \n\n");
 
     return 1;
 }
@@ -151,13 +151,13 @@ void passengerMenu(const CityGraph *graph) {
     if (graph == NULL) return;
 
     printf("\n");
-    printf("  ======================================== \n");
+    printf("   ________________________________________ \n");
     printf("            PASSENGER JOURNEY SIMULATOR            \n");
-    printf("  ======================================== \n");
+    printf("   ________________________________________ \n");
     printf("   1. Run Standard Demo (P001: Nugegoda -> Uni)     \n");
     printf("   2. Create Custom Passenger Journey                  \n");
     printf("   3. Generate & Simulate Random Passenger             \n");
-    printf("  ======================================== \n");
+    printf("   ________________________________________ \n");
     printf("  Enter choice (1-3): ");
 
     int choice = 1;

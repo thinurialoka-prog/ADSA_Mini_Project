@@ -15,8 +15,8 @@
 #define LOC_BAMBALAPITIYA    5
 #define LOC_CITY_CENTER      6
 #define LOC_BI_AIRPORT          7
-#define LOC_INDUSTRIAL       8
-#define LOC_STADIUM          9
+#define LOC_WELLAWATTA       8
+#define LOC_DEHIWALA          9
 #define CITY_LOCATION_COUNT  10
 
 /* ================================================================

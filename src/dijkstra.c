@@ -233,25 +233,25 @@ void printRoute(const PathResult *result, const CityGraph *graph) {
     if (result == NULL || graph == NULL) return;
 
     printf("\n");
-    printf("  ========================================\n");
-    printf("               ROUTE FINDER — RESULT                     \n");
-    printf("  ========================================\n");
+    printf("  ________________________________________\n");
+    printf("               ROUTE FINDER - RESULT                     \n");
+     printf("  ________________________________________\n");
     printf("  Mode  : %-47s\n", modeName(result->mode));
     printf("  From  : %-47s\n",
            graph->locations[result->source].name);
     printf("  To    : %-47s\n",
            graph->locations[result->destination].name);
-    printf("  ========================================\n");
+     printf("  ________________________________________\n");
 
     if (!result->reachable) {
         printf("    [!] No path found between these locations.            \n");
-        printf("  ========================================\n\n");
+          printf("  ________________________________________\n");
         return;
     }
 
     /* ── Path sequence header ── */
     printf("    PATH SEQUENCE                                          \n");
-    printf("  ========================================\n");
+      printf("  ________________________________________\n");
 
     int i;
     for (i = 0; i < result->path_len; i++) {
@@ -259,41 +259,41 @@ void printRoute(const PathResult *result, const CityGraph *graph) {
         const char *name = graph->locations[loc_id].name;
 
         if (i == 0) {
-            printf("  ║  [START] [%d] %-43s║\n", loc_id, name);
+            printf("    [START] [%d] %-43s \n", loc_id, name);
         } else if (i == result->path_len - 1) {
             /* Print the incoming leg before the final stop */
-            printf("  ║  │  %-7s  dist: %5.1f km  time: %4.0f min  "
-                   "fare: $%5.2f  ║\n",
+            printf("       %-7s  dist: %5.1f km  time: %4.0f min  "
+                   "fare: Rs. %5.2f   \n",
                    transportName(result->transport_used[i - 1]),
                    result->leg_distance[i - 1],
                    result->leg_time[i - 1],
                    result->leg_fare[i - 1]);
-            printf("  ║  [  END ] [%d] %-43s║\n", loc_id, name);
+            printf("    [END ] [%d] %-43s \n", loc_id, name);
         } else {
-            printf("  ║  │  %-7s  dist: %5.1f km  time: %4.0f min  "
-                   "fare: $%5.2f  ║\n",
+            printf("       %-7s  dist: %5.1f km  time: %4.0f min  "
+                   "fare: Rs.%5.2f   \n",
                    transportName(result->transport_used[i - 1]),
                    result->leg_distance[i - 1],
                    result->leg_time[i - 1],
                    result->leg_fare[i - 1]);
-            printf("  ║  [STOP %-1d] [%d] %-43s║\n", i, loc_id, name);
+            printf("    [STOP %-1d] [%d] %-43s \n", i, loc_id, name);
         }
     }
 
     /* ── Summary totals ── */
-    printf("  ========================================╣\n");
+    printf("  ________________________________________\n");
     printf("    TOTALS                                                 \n\n");
     printf("    Total Distance : %7.2f km                            \n",
            result->total_distance);
     printf("    Total Time     : %7.2f min  (%4.1f hrs)              \n",
            result->total_time, result->total_time / 60.0);
-    printf("    Total Fare     : $%7.2f                              \n",
+    printf("    Total Fare     : Rs. %7.2f                              \n",
            result->total_fare);
     printf("    Stops (legs)   : %d stop(s), %d leg(s)                ",
            result->path_len, result->path_len - 1);
     /* Pad to fill the box */
     printf("        \n");
-    printf("  ========================================\n\n");
+     printf("  ________________________________________\n\n");
 }
 
 /* ================================================================

@@ -28,74 +28,57 @@ void initializeCity(CityGraph *graph) {
 
     /* ---- 10 canonical locations (order matters – matches LOC_* ids) ---- */
     addLocation(graph, "University of Colombo");        /* 0 */
-    addLocation(graph, "Nugegoda Area");  /* 1 */
+    addLocation(graph, "Nugegoda");  /* 1 */
     addLocation(graph, "Pettah");      /* 2 */
     addLocation(graph, "Colombo Fort");   /* 3 */
     addLocation(graph, "Borella");          /* 4 */
     addLocation(graph, "Bambalapitiya");     /* 5 */
     addLocation(graph, "City Center");       /* 6 */
-<<<<<<< Updated upstream
     addLocation(graph, "BI Airport");           /* 7 */
-    addLocation(graph, "Industrial Area");   /* 8 */
-=======
-    addLocation(graph, "Airport");           /* 7 */
     addLocation(graph, "Wellawatta");   /* 8 */
->>>>>>> Stashed changes
-    addLocation(graph, "Stadium");           /* 9 */
+    addLocation(graph, "Dehiwala");           /* 9 */
     printf("\n");
 
     /* ---- Bus graph edges ---- */
     printf("--- [ Graph Bus Routes ] ---\n");
     addBidirectionalRoute(graph, LOC_UNIVERSITY_OF_COLOMBO,   LOC_NUGEGODA,
-                          TRANSPORT_BUS, 2.5, 8.0,  0.80, 60);
+                          TRANSPORT_BUS, 6.5, 30.0,  60.00, 50);
     addBidirectionalRoute(graph, LOC_UNIVERSITY_OF_COLOMBO,   LOC_BORELLA,
-                          TRANSPORT_BUS, 3.8, 12.0, 1.00, 60);
+                          TRANSPORT_BUS, 3.5, 30.0, 35.00, 60);
     addBidirectionalRoute(graph, LOC_NUGEGODA,  LOC_PETTAH,
-                          TRANSPORT_BUS, 4.2, 14.0, 1.00, 80);
+                          TRANSPORT_BUS, 10.0, 45.0, 100.00, 60);
     addBidirectionalRoute(graph, LOC_PETTAH, LOC_CITY_CENTER,
-                          TRANSPORT_BUS, 3.5, 10.0, 0.90, 80);
+                          TRANSPORT_BUS, 8.0, 40.0, 80.00, 60);
     addBidirectionalRoute(graph, LOC_PETTAH, LOC_BAMBALAPITIYA,
-                          TRANSPORT_BUS, 5.1, 16.0, 1.20, 80);
-<<<<<<< Updated upstream
-    addBidirectionalRoute(graph, LOC_PETTAH, LOC_INDUSTRIAL,
-=======
-    addBidirectionalRoute(graph, LOC_BUS_TERMINAL,  LOC_WELLAWATTA ,
->>>>>>> Stashed changes
-                          TRANSPORT_BUS, 7.5, 22.0, 1.50, 80);
+                          TRANSPORT_BUS, 15.0, 60.0, 110.00, 60);
+    addBidirectionalRoute(graph, LOC_PETTAH, LOC_WELLAWATTA,
+                          TRANSPORT_BUS, 18.0, 80.0, 120.00, 60);
     addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_BORELLA,
-                          TRANSPORT_BUS, 4.5, 13.0, 1.10, 60);
+                          TRANSPORT_BUS, 16.0, 65.0, 105.00, 40);
     addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_BAMBALAPITIYA,
-                          TRANSPORT_BUS, 2.8,  9.0, 0.80, 60);
+                          TRANSPORT_BUS, 3.0,  10.0, 30.00, 50);
     addBidirectionalRoute(graph, LOC_CITY_CENTER,  LOC_DEHIWALA,
-                          TRANSPORT_BUS, 6.2, 18.0, 1.30, 80);
-<<<<<<< Updated upstream
-    addBidirectionalRoute(graph, LOC_BAMBALAPITIYA,LOC_STADIUM,
-=======
-    addBidirectionalRoute(graph, LOC_SHOPPING_MALL,LOC_DEHIWALA,
->>>>>>> Stashed changes
-                          TRANSPORT_BUS, 4.0, 12.0, 1.00, 60);
+                          TRANSPORT_BUS, 6.0, 20.0, 60.00, 40);
+    addBidirectionalRoute(graph, LOC_BAMBALAPITIYA,LOC_DEHIWALA,
+                          TRANSPORT_BUS, 7.0, 25.0, 70.00, 60);
     addBidirectionalRoute(graph, LOC_BI_AIRPORT,      LOC_CITY_CENTER,
-                          TRANSPORT_BUS, 18.0,35.0, 4.00, 50);
+                          TRANSPORT_BUS, 20.0, 90.0, 200.00, 50);
     printf("\n");
 
     /* ---- Train graph edges ---- */
     printf("--- [ Graph Train Routes ] ---\n");
     addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_CITY_CENTER,
-                          TRANSPORT_TRAIN, 6.0,  8.0, 2.00, 300);
+                          TRANSPORT_TRAIN, 6.0,  8.0, 60.00, 300);
     addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_UNIVERSITY_OF_COLOMBO,
-                          TRANSPORT_TRAIN, 8.5, 10.0, 2.20, 300);
+                          TRANSPORT_TRAIN, 8.5, 10.0, 70.00, 300);
     addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_BI_AIRPORT,
-                          TRANSPORT_TRAIN, 25.0,22.0, 6.00, 400);
-<<<<<<< Updated upstream
-    addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_INDUSTRIAL,
-=======
-    addBidirectionalRoute(graph, LOC_RAILWAY_STATION,  LOC_WELLAWATTA ,
->>>>>>> Stashed changes
-                          TRANSPORT_TRAIN, 12.0,14.0, 2.50, 350);
+                          TRANSPORT_TRAIN, 25.0,22.0, 100.00, 400);
+    addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_WELLAWATTA,
+                          TRANSPORT_TRAIN, 12.0,14.0, 80.00, 350);
     addBidirectionalRoute(graph, LOC_COLOMBO_FORT, LOC_BORELLA,
-                          TRANSPORT_TRAIN, 7.2,  9.0, 2.10, 250);
+                          TRANSPORT_TRAIN, 7.2,  9.0, 60.00, 250);
     addBidirectionalRoute(graph, LOC_CITY_CENTER,     LOC_DEHIWALA,
-                          TRANSPORT_TRAIN, 5.5,  7.0, 1.80, 400);
+                          TRANSPORT_TRAIN, 5.5,  7.0, 50.00, 400);
     printf("\n");
 
     printf("[Transport] City graph ready: %d locations loaded.\n",
@@ -108,60 +91,45 @@ void displayCityNetwork(const CityGraph *graph) {
     if (graph == NULL) return;
 
     printf("\n");
-    printf("================================================================\n");
-    printf("      SMART CITY TRANSPORT NETWORK — ROUTE SUMMARY             \n");
-    printf("================================================================\n");
+    printf("____________________________________________________________________________\n\n");
+    printf("              SMART CITY TRANSPORT NETWORK - ROUTE SUMMARY\n");
+    printf("____________________________________________________________________________\n\n");
     printf(" %-22s %-22s %-6s %5s %5s %5s %4s\n",
            "FROM", "TO", "TYPE", "KM", "MIN", "FARE", "PAX");
-    printf("----------------------------------------------------------------\n");
+    printf("____________________________________________________________________________\n\n");
 
     int i;
+
     for (i = 0; i < graph->location_count; i++) {
         const Route *r = graph->locations[i].routes;
+
         while (r != NULL) {
-            /* Skip backward half of bidirectional pairs (src > dest).
-               True one-way edges where no reverse exists are kept. */
-            int has_reverse = 0;
-            if (i > r->destination) {
-                const Route *rev = graph->locations[r->destination].routes;
-                while (rev) {
-                    if (rev->destination == i &&
-                        rev->transport   == r->transport) {
-                        has_reverse = 1; break;
-                    }
-                    rev = rev->next;
-                }
-                if (has_reverse) { r = r->next; continue; }
-            }
 
-            int bidir = 0;
+            /*
+             * Since all routes are assumed to be bidirectional,
+             * display each connection only once.
+             */
+
             if (i < r->destination) {
-                const Route *rev = graph->locations[r->destination].routes;
-                while (rev) {
-                    if (rev->destination == i &&
-                        rev->transport   == r->transport) {
-                        bidir = 1; break;
-                    }
-                    rev = rev->next;
-                }
+                printf(" %-22s %-22s %-6s %5.1f %5.0f %5.2f %4d\n",
+                       graph->locations[i].name,
+                       graph->locations[r->destination].name,
+                       (r->transport == TRANSPORT_BUS) ? "Bus" : "Train",
+                       r->distance,
+                       r->travel_time,
+                       r->fare,
+                       r->capacity);
             }
 
-            printf(" %-22s %-22s %-6s %5.1f %5.0f %5.2f %4d %s\n",
-                   graph->locations[i].name,
-                   graph->locations[r->destination].name,
-                   (r->transport == TRANSPORT_BUS) ? "Bus" : "Train",
-                   r->distance, r->travel_time, r->fare, r->capacity,
-                   bidir ? "(bi)" : "(->)");
             r = r->next;
         }
     }
 
-    printf("================================================================\n");
-    printf("  Legend: (bi) bidirectional   (->) one-way\n");
-    printf("================================================================\n\n");
+    printf("____________________________________________________________________________\n\n");
 
     displayGraph(graph);
 }
+
 
 /* ================================================================
  * SECTION B – BUS NETWORK
@@ -171,35 +139,25 @@ void displayCityNetwork(const CityGraph *graph) {
  *
  *  Route overview:
  *
- *   B1 "University of Colombo Corridor"
+ *   B1 " ROUTE 01 "
  *       University of Colombo -> Pettah -> Borella -> Bambalapitiya
  *       Serves student / medical / retail commuters.
  *
- *   B2 "Nugegoda Express"
- *       Nugegoda -> Pettah -> City Center -> Stadium
+ *   B2 "ROUTE 02"
+ *       Nugegoda -> Pettah -> City Center -> Dehiwala
  *       Daily commuter trunk line from suburbs to downtown.
  *
- *   B3 "Airport Shuttle"
+ *   B3 "ROUTE 03"
  *       BI Airport -> City Center -> Bambalapitiya
  *       Connects the airport to the commercial district.
  *
-<<<<<<< Updated upstream
- *   B4 "Industrial Link"
- *       Industrial Area -> Pettah -> Nugegoda -> University of Colombo
+ *   B4 "ROUTE 04"
+ *       Wellawatta -> Pettah -> Nugegoda -> University of Colombo
  *       Early-morning shift-worker and student route.
  *
- *   B5 "City Loop"
+ *   B5 "ROUTE 05"
  *       City Center -> Borella -> University of Colombo -> Nugegoda
- *       -> Pettah -> Bambalapitiya -> Stadium -> City Center
-=======
- *   B4 "Wellawatta Link"
- *       Wellawatta -> Bus Terminal -> Residential Area -> University
- *       Early-morning shift-worker and student route.
- *
- *   B5 "City Loop"
- *       City Center -> Hospital -> University -> Residential Area
- *       -> Bus Terminal -> Shopping Mall -> Dehiwala -> City Center
->>>>>>> Stashed changes
+ *       -> Pettah -> Bambalapitiya -> Dehiwala -> City Center
  *       Full inner-city circular loop.
  * ================================================================ */
 
@@ -257,71 +215,54 @@ void initializeBuses(BusNetwork *network) {
 
     network->bus_count = 0;
 
-    /* B1 – University of Colombo Corridor */
+    /* B1 –  ROUTE 01 */
     {
         const int stops[] = {
             LOC_UNIVERSITY_OF_COLOMBO, LOC_PETTAH,
             LOC_BORELLA,   LOC_BAMBALAPITIYA
         };
-        addBus(network, "B1", "University of Colombo Corridor",
+        addBus(network, "B1", "ROUTE 01",
                70, 15, stops, 4);
     }
 
-    /* B2 – Nugegoda Express */
+    /* B2 –  ROUTE 02 */
     {
         const int stops[] = {
-<<<<<<< Updated upstream
             LOC_NUGEGODA, LOC_PETTAH,
-            LOC_CITY_CENTER, LOC_STADIUM
-=======
-            LOC_RESIDENTIAL, LOC_BUS_TERMINAL,
             LOC_CITY_CENTER, LOC_DEHIWALA
->>>>>>> Stashed changes
         };
-        addBus(network, "B2", "Nugegoda Express",
+        addBus(network, "B2", "ROUTE 02",
                80, 10, stops, 4);
     }
 
-    /* B3 – Airport Shuttle */
+    /* B3 – ROUTE 03 */
     {
         const int stops[] = {
             LOC_BI_AIRPORT, LOC_CITY_CENTER, LOC_BAMBALAPITIYA
         };
-        addBus(network, "B3", "Airport Shuttle",
+        addBus(network, "B3", " ROUTE 03",
                50, 30, stops, 3);
     }
 
-    /* B4 – Wellawatta Link */
+    /* B4 –  ROUTE 04 */
     {
         const int stops[] = {
-<<<<<<< Updated upstream
-            LOC_INDUSTRIAL,  LOC_PETTAH,
+            LOC_WELLAWATTA,  LOC_PETTAH,
             LOC_NUGEGODA, LOC_UNIVERSITY_OF_COLOMBO
-=======
-             LOC_WELLAWATTA ,  LOC_BUS_TERMINAL,
-            LOC_RESIDENTIAL, LOC_UNIVERSITY
->>>>>>> Stashed changes
         };
-        addBus(network, "B4", "Wellawatta Link",
+        addBus(network, "B4", " ROUTE 04",
                80, 20, stops, 4);
     }
 
-    /* B5 – City Loop (circular) */
+    /* B5 –  ROUTE 05 */
     {
         const int stops[] = {
-<<<<<<< Updated upstream
             LOC_CITY_CENTER,  LOC_BORELLA,
             LOC_UNIVERSITY_OF_COLOMBO,   LOC_NUGEGODA,
             LOC_PETTAH, LOC_BAMBALAPITIYA,
-            LOC_STADIUM,      LOC_CITY_CENTER
-=======
-            LOC_CITY_CENTER,  LOC_HOSPITAL,
-            LOC_UNIVERSITY,   LOC_RESIDENTIAL,
-            LOC_BUS_TERMINAL, LOC_SHOPPING_MALL,
             LOC_DEHIWALA,      LOC_CITY_CENTER
->>>>>>> Stashed changes
         };
-        addBus(network, "B5", "City Loop",
+        addBus(network, "B5", " ROUTE 05",
                60, 12, stops, 8);
     }
 
@@ -336,38 +277,30 @@ void displayBuses(const BusNetwork *network) {
     if (network == NULL) return;
 
     printf("\n");
-    printf("╔══════════════════════════════════════════════════════════════╗\n");
-    printf("║               BUS FLEET — SERVICE SUMMARY                   ║\n");
-    printf("╠════╦══════════════════════╦═════╦═══════╦═══════╦═══════════╣\n");
-    printf("║ ID ║ Route Name           ║ Cap ║ Freq  ║ Pax   ║ Load      ║\n");
-    printf("╠════╬══════════════════════╬═════╬═══════╬═══════╬═══════════╣\n");
+    printf(" _______________________________________________________________\n\n");
+    printf("|              BUS FLEET - SERVICE SUMMARY                     | \n");
+    printf(" _______________________________________________________________\n\n");
+    printf("| ID | Route Name           | Cap | Freq    | Pax    | Load   |\n");
+    printf("|____|______________________|_____|_________|________|________|\n");
 
     int i;
     for (i = 0; i < network->bus_count; i++) {
         const Bus *b = &network->buses[i];
         double load_pct = (b->capacity > 0)
                           ? (100.0 * b->current_passengers / b->capacity)
-                          : 0.0;
+                          : 0.0;  
 
-        /* Visual load bar (10 chars wide) */
-        char bar[11];
-        int filled = (int)(load_pct / 10.0);
-        int j;
-        for (j = 0; j < 10; j++) bar[j] = (j < filled) ? '#' : '.';
-        bar[10] = '\0';
-
-        printf("║ %-2s ║ %-20s ║ %3d ║ %3d min ║ %3d/%3d ║ [%s] %3.0f%% ║\n",
+        printf("| %-2s | %-20s | %3d | %3d min | %3d/%3d |  %3.0f%% |\n",
                b->bus_id,
                b->route_name,
                b->capacity,
                b->frequency_min,
                b->current_passengers,
                b->capacity,
-               bar,
                load_pct);
     }
 
-    printf("╚════╩══════════════════════╩═════╩═══════╩═══════╩═══════════╝\n");
+     printf("|____|______________________|_____|_________|_________|________|\n");
     printf("  Total buses: %d\n\n", network->bus_count);
 }
 
@@ -378,19 +311,17 @@ void displayBusRoutes(const BusNetwork *network, const CityGraph *graph) {
     if (network == NULL || graph == NULL) return;
 
     printf("\n");
-    printf("════════════════════════════════════════════════════════════════\n");
-    printf("                  BUS ROUTES — STOP SEQUENCES                  \n");
-    printf("════════════════════════════════════════════════════════════════\n");
+    printf(" _______________________________________________________________\n\n");
+    printf("                  BUS ROUTES - STOP SEQUENCES                  \n");
+    printf(" _______________________________________________________________\n\n");
 
     int i;
     for (i = 0; i < network->bus_count; i++) {
         const Bus *b = &network->buses[i];
 
-        printf("\n  ┌─────────────────────────────────────────────┐\n");
-        printf("  │  Bus %-3s │ %-28s │\n", b->bus_id, b->route_name);
-        printf("  │  Capacity: %-3d pax  │  Every %-3d min          │\n",
-               b->capacity, b->frequency_min);
-        printf("  ├─────────────────────────────────────────────┤\n");
+        printf(" _______________________________________________________________\n\n");
+        printf("  |  Bus %-3s | %-28s |\n", b->bus_id, b->route_name);
+        printf(" _______________________________________________________________\n\n");
 
         int s;
         for (s = 0; s < b->num_stops; s++) {
@@ -401,24 +332,24 @@ void displayBusRoutes(const BusNetwork *network, const CityGraph *graph) {
                     : "Unknown";
 
             if (s == 0) {
-                printf("  │  [START] [%d] %-31s│\n", loc_id, loc_name);
+                printf("    [START] [%d] %-31s \n", loc_id, loc_name);
             } else if (s == b->num_stops - 1 &&
                        b->stops[s] == b->stops[0]) {
                 /* Circular route: last stop same as first */
-                printf("  │     |                                         │\n");
-                printf("  │  [LOOP]  [%d] %-31s│\n", loc_id, loc_name);
+                 
+                printf("    [LOOP]  [%d] %-31s \n", loc_id, loc_name);
             } else if (s == b->num_stops - 1) {
-                printf("  │     |                                         │\n");
-                printf("  │  [ END ] [%d] %-31s│\n", loc_id, loc_name);
+                 
+                printf("    [ END ] [%d] %-31s \n", loc_id, loc_name);
             } else {
-                printf("  │     |                                         │\n");
-                printf("  │  [STOP%d] [%d] %-31s│\n", s, loc_id, loc_name);
+                 
+                printf("    [STOP%d] [%d] %-31s \n", s, loc_id, loc_name);
             }
         }
-        printf("  └─────────────────────────────────────────────┘\n");
+        printf(" _______________________________________________________________\n\n");
     }
 
-    printf("\n════════════════════════════════════════════════════════════════\n\n");
+    printf(" _______________________________________________________________\n\n");
 }
 
 /* ----------------------------------------------------------------
@@ -461,23 +392,18 @@ void resetBusPassengers(BusNetwork *network) {
  *
  *  Route overview:
  *
- *   T1 "Northern Line"
+ *   T1 "EXPRESS 01"
  *       Nugegoda  -> Colombo Fort  -> City Center -> BI Airport
  *       Main commuter trunk connecting suburbs, the rail hub,
  *       downtown, and the BI Airport.
  *
-<<<<<<< Updated upstream
- *   T2 "Industrial Shuttle"
- *       Industrial Area -> Colombo Fort  -> University of Colombo
-=======
- *   T2 "Wellawatta Shuttle"
- *       Wellawatta -> Railway Station -> University
->>>>>>> Stashed changes
+ *   T2 "EXPRESS 02"
+ *       Wellawatta -> Colombo Fort  -> University of Colombo
  *       Early-morning shift-worker and student express;
  *       limited stops for maximum speed.
  *
- *   T3 "Airport Metro"
- *       BI Airport -> Colombo Fort -> City Center -> Stadium
+ *   T3 "EXPRESS 03"
+ *       BI Airport -> Colombo Fort -> City Center -> Dehiwala
  *       Premium BI Airport link continuing into the entertainment
  *       district; elevated frequency on event days.
  * ================================================================ */
@@ -536,7 +462,7 @@ void initializeTrains(TrainNetwork *network) {
 
     network->train_count = 0;
 
-    /* T1 – Northern Line
+    /* T1 – EXPRESS 01
      *   Nugegoda -> Colombo Fort -> City Center -> BI Airport
      *   Core commuter service; highest capacity, highest frequency. */
     {
@@ -544,45 +470,31 @@ void initializeTrains(TrainNetwork *network) {
             LOC_NUGEGODA,    LOC_COLOMBO_FORT,
             LOC_CITY_CENTER,    LOC_BI_AIRPORT
         };
-        addTrain(network, "T1", "Northern Line",
+        addTrain(network, "T1", "EXPRESS 01",
                  350, 8, stops, 4);
     }
 
-<<<<<<< Updated upstream
-    /* T2 – Industrial Shuttle
-     *   Industrial Area -> Colombo Fort -> University of Colombo
+    /* T2 – EXPRESS 02
+     *   Wellawatta -> Colombo Fort -> University of Colombo
      *   Shift-worker and student express; fewer stops, fast journey. */
     {
         const int stops[] = {
-            LOC_INDUSTRIAL, LOC_COLOMBO_FORT, LOC_UNIVERSITY_OF_COLOMBO
-=======
-    /* T2 – Wellawatta Shuttle
-     *   Wellawatta -> Railway Station -> University
-     *   Shift-worker and student express; fewer stops, fast journey. */
-    {
-        const int stops[] = {
-             LOC_WELLAWATTA , LOC_RAILWAY_STATION, LOC_UNIVERSITY
->>>>>>> Stashed changes
+            LOC_WELLAWATTA, LOC_COLOMBO_FORT, LOC_UNIVERSITY_OF_COLOMBO
         };
-        addTrain(network, "T2", "Wellawatta Shuttle",
+        addTrain(network, "T2", "EXPRESS 02",
                  300, 15, stops, 3);
     }
 
-    /* T3 – Airport Metro
-     *   Airport -> Colombo Fort -> City Center -> Stadium
+    /* T3 – EXPRESS 03
+     *   Airport -> Colombo Fort -> City Center -> Dehiwala
      *   Premium airport link into the entertainment district.
      *   Elevated frequency on match/event days. */
     {
         const int stops[] = {
-<<<<<<< Updated upstream
             LOC_BI_AIRPORT,     LOC_COLOMBO_FORT,
-            LOC_CITY_CENTER,    LOC_STADIUM
-=======
-            LOC_AIRPORT,        LOC_RAILWAY_STATION,
             LOC_CITY_CENTER,    LOC_DEHIWALA
->>>>>>> Stashed changes
         };
-        addTrain(network, "T3", "Airport Metro",
+        addTrain(network, "T3", "EXPRESS 03",
                  400, 12, stops, 4);
     }
 
@@ -597,11 +509,11 @@ void displayTrains(const TrainNetwork *network) {
     if (network == NULL) return;
 
     printf("\n");
-    printf("╔══════════════════════════════════════════════════════════════╗\n");
-    printf("║              TRAIN FLEET — SERVICE SUMMARY                  ║\n");
-    printf("╠════╦══════════════════════╦═════╦═══════╦════════╦══════════╣\n");
-    printf("║ ID ║ Route Name           ║ Cap ║ Freq  ║ Pax    ║ Load     ║\n");
-    printf("╠════╬══════════════════════╬═════╬═══════╬════════╬══════════╣\n");
+    printf(" _______________________________________________________________\n\n");
+    printf("|              TRAIN FLEET - SERVICE SUMMARY                     | \n");
+    printf(" _______________________________________________________________\n\n");
+    printf("| ID | Route Name           | Cap | Freq    | Pax    | Load   |\n");
+    printf("|____|______________________|_____|_________|________|________|\n");
 
     int i;
     for (i = 0; i < network->train_count; i++) {
@@ -610,25 +522,17 @@ void displayTrains(const TrainNetwork *network) {
                           ? (100.0 * t->current_passengers / t->capacity)
                           : 0.0;
 
-        /* Visual load bar (10 chars wide) */
-        char bar[11];
-        int filled = (int)(load_pct / 10.0);
-        int j;
-        for (j = 0; j < 10; j++) bar[j] = (j < filled) ? '#' : '.';
-        bar[10] = '\0';
-
-        printf("║ %-2s ║ %-20s ║ %3d ║ %3d min ║ %3d/%3d ║ [%s]%3.0f%% ║\n",
-               t->train_id,
-               t->route_name,
-               t->capacity,
-               t->frequency_min,
-               t->current_passengers,
-               t->capacity,
-               bar,
-               load_pct);
+        printf("| %-2s | %-20s | %3d | %3d min | %3d/%3d |  %3.0f%% |\n",
+                t->train_id,
+                t->route_name,
+                t->capacity,
+                t->frequency_min,
+                t->current_passengers,
+                t->capacity,
+                load_pct);
     }
 
-    printf("╚════╩══════════════════════╩═════╩═══════╩════════╩══════════╝\n");
+    printf("|____|______________________|_____|_________|________|________|\n");
     printf("  Total trains: %d\n\n", network->train_count);
 }
 
@@ -639,19 +543,17 @@ void displayTrainRoutes(const TrainNetwork *network, const CityGraph *graph) {
     if (network == NULL || graph == NULL) return;
 
     printf("\n");
-    printf("════════════════════════════════════════════════════════════════\n");
-    printf("                TRAIN ROUTES — STOP SEQUENCES                  \n");
-    printf("════════════════════════════════════════════════════════════════\n");
+    printf(" _______________________________________________________________\n\n");
+    printf("                  TRAIN ROUTES - STOP SEQUENCES                  \n");
+    printf(" _______________________________________________________________\n\n");
 
     int i;
     for (i = 0; i < network->train_count; i++) {
         const Train *t = &network->trains[i];
 
-        printf("\n  ┌─────────────────────────────────────────────┐\n");
-        printf("  │  Train %-3s │ %-26s │\n", t->train_id, t->route_name);
-        printf("  │  Capacity: %-3d pax  │  Every %-3d min          │\n",
-               t->capacity, t->frequency_min);
-        printf("  ├─────────────────────────────────────────────┤\n");
+        printf(" _______________________________________________________________\n\n");
+        printf("  |  Train %-3s | %-26s |\n", t->train_id, t->route_name);
+        printf(" _______________________________________________________________\n\n");
 
         int s;
         for (s = 0; s < t->num_stops; s++) {
@@ -662,24 +564,20 @@ void displayTrainRoutes(const TrainNetwork *network, const CityGraph *graph) {
                     : "Unknown";
 
             if (s == 0) {
-                printf("  │  [START] [%d] %-31s│\n", loc_id, loc_name);
+                printf("   [START] [%d] %-31s\n", loc_id, loc_name);
             } else if (s == t->num_stops - 1 &&
                        t->stops[s] == t->stops[0]) {
-                /* Circular route */
-                printf("  │     |                                         │\n");
-                printf("  │  [LOOP]  [%d] %-31s│\n", loc_id, loc_name);
+                printf("   [LOOP]  [%d] %-31s\n", loc_id, loc_name);
             } else if (s == t->num_stops - 1) {
-                printf("  │     |                                         │\n");
-                printf("  │  [ END ] [%d] %-31s│\n", loc_id, loc_name);
+                printf("   [ END ] [%d] %-31s\n", loc_id, loc_name);
             } else {
-                printf("  │     |                                         │\n");
-                printf("  │  [STOP%d] [%d] %-31s│\n", s, loc_id, loc_name);
+                printf("   [STOP%d] [%d] %-31s\n", s, loc_id, loc_name);
             }
         }
-        printf("  └─────────────────────────────────────────────┘\n");
+        printf(" _______________________________________________________________\n\n");
     }
 
-    printf("\n════════════════════════════════════════════════════════════════\n\n");
+    printf(" _______________________________________________________________\n\n");
 }
 
 /* ----------------------------------------------------------------
